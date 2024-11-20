@@ -36,7 +36,7 @@
 <article>   
          
       <div class=" about-text">
-                <p class="front-text">As a Parent Coach LISA with more than 17 years of experience working with children and families, I believe that every parent has the potential to be a confident, positive and effective caregiver. My role involves supporting and empowering parents to confidently navigate the challenges of raising children, foster strong connections within the family, and cultivate a positive and nurturing environment where both parents and children can thrive. 
+                <p class="front-text">As a Parent Coach with more than 17 years of experience working with children and families, I believe that every parent has the potential to be a confident, positive and effective caregiver. My role involves supporting and empowering parents to confidently navigate the challenges of raising children, foster strong connections within the family, and cultivate a positive and nurturing environment where both parents and children can thrive. 
 
 </p>
       </div>  
