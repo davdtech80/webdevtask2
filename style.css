@@ -1,0 +1,590 @@
+
+*{
+
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+
+h1, p,  {
+
+font-family: sans-serif;
+color: blue;
+
+}
+
+
+h1 {
+
+
+	color: 	orange;
+	text-align: center;
+	font-size: 	30px;
+	font-style: italic;
+	margin:0 auto	;
+	background-color: ghostwhite;
+
+}
+
+p {
+
+	color: orange;
+	text-align: justify;
+	font-style: italic;
+	font-size: 20px;
+	
+	line-height: 1.5;
+
+}
+
+.copyright{
+
+	font-size: 9px;
+	font-family: sans-serif;
+}
+
+
+
+body {
+  background-color: #f7f7f7;
+  font-family: sans-serif;
+  line-height: 1;
+  font-weight: 400;
+}
+
+
+body, .parent-img {
+    margin: 0;
+    padding: 0;
+    /*position: relative; 39 CSS CRSE*/
+}
+
+
+ a:link{
+
+ 	color: green;
+ }
+
+
+ .list{
+
+ 	background-color: grey	;
+ 	width: 	100%;
+ 	height: auto;
+ 	max-width: 	100%;
+ 	display: block;
+ 	margin:0 auto	;
+ 	margin-bottom: 	auto	;
+ 	margin-top: 	auto	;
+}
+
+
+.about-list{
+
+
+	background-color: green	;
+ 	width: 	100%;
+ 	height: auto;
+ 	max-width: 	100%;
+ 	display: block;
+ 	margin:0 auto	;
+ 	margin-bottom: 	auto	;
+ 	margin-top: 	auto	;
+
+}
+
+
+.list-c{
+
+ 	background-color: slategrey	;
+ 	width: 	100%;
+ 	height: auto;
+ 	max-width: 	100%;
+ 	display: block;
+ 	margin:0 auto	;
+ 	margin-bottom: 	auto	;
+ 	margin-top: 	auto	;
+}
+
+
+.list-r{
+
+ 	background-color: brown	;
+ 	width: 	100%;
+ 	height: auto;
+ 	max-width: 	100%;
+ 	display: block;
+ 	margin:0 auto	;
+ 	margin-bottom: 	auto	;
+ 	margin-top: 	auto	;
+}
+
+
+.list-l{
+
+ 	background-color: black	;
+ 	width: 	100%;
+ 	height: auto;
+ 	max-width: 	100%;
+ 	display: block;
+ 	margin:0 auto	;
+ 	margin-bottom: 	auto	;
+ 	margin-top: 	auto	;
+}
+
+
+
+
+.parent-img {
+    width: 100%;     /* Makes the image span the full width of the page */
+    height: auto;    /* Maintains the image's aspect ratio */
+    max-width: 100%; /* Prevents the image from exceeding its original size */
+    display: block;  /* Removes any inline spacing around the image */
+    margin:0 auto	;
+    margin-top:	30px;
+    margin-bottom:	auto;
+
+}
+
+.tfal-img{
+
+
+    width: 100%;     /* Makes the image span the full width of the page */
+    height: auto;    /* Maintains the image's aspect ratio */
+    max-width: 100%; /* Prevents the image from exceeding its original size */
+    display: block;  /* Removes any inline spacing around the image */
+    margin:0 auto	;
+    margin-top:	10px;
+    margin-bottom:	auto;
+
+
+
+}
+
+.font-text-a{
+
+    color: white;
+}
+
+.front-text{
+
+	width: 	100%;
+ 	height: auto;
+ 	max-width: 	100%;
+ 	display: block;
+ 	margin:0 auto	;
+ 	margin-top: 	auto;
+ 	margin-bottom: 	auto;
+}
+
+.text{
+
+	width: 	100%;
+ 	height: auto;
+ 	max-width: 	100%;
+ 	display: block;
+ 	background-color: 	ghostwhite;
+
+}
+
+.about-text{
+
+	width: 	100%;
+ 	height: auto;
+ 	max-width: 	100%;
+ 	display: block;
+ 	background-color: ghostwhite;
+
+}
+
+.front-about-text{
+
+width: 	100%;
+ 	height: auto;
+ 	max-width: 	100%;
+ 	display: block;
+ 	margin:0 auto	;
+ 	margin-top: 	auto;
+ 	margin-bottom: 	auto;
+
+}
+
+
+span {
+
+	color: 	orange	;
+}
+ 
+
+ .nav-menu {
+    list-style-type: none;        
+    display: flex;                
+    justify-content: space-evenly; /* Distribute space more evenly */
+    padding: 0;                   
+    margin-top: 20px;             
+    
+}
+
+.nav-menu li {
+    margin: 0 40px;               /* Increased space between items */
+    padding: 10px 20px;           /* Add padding inside list items */
+    border-radius: 5px;           /* Round the corners of the items */
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+.nav-menu li:hover {
+    background-color: #ddd;      /* Change background on hover */
+}
+
+.nav-menu a {
+    text-decoration: none; 
+    color: #333;           
+    font-size: 16px;             /* Adjust font size for better readability */
+    font-weight: bold;           /* Make the text bold */
+}
+
+.nav-menu li a:hover {
+    color: #007BFF;              /* Change text color on hover */
+}
+
+.family_btn{
+
+    padding-top: 100px;
+}
+ 
+.child_btn{
+
+    padding-top: 100px;
+}
+
+
+.likeus{
+
+    padding-top: 100px;
+}
+
+
+
+ .search{
+
+ 	background-color: grey;
+ }
+
+ 
+	
+.nav-menu-about {
+    list-style-type: none;        
+    display: flex;                
+    justify-content: space-evenly; /* Distribute space more evenly */
+    padding: 0;                   
+    margin-top: 20px;             
+    
+}
+
+.nav-menu-about li {
+    margin: 0 40px;               /* Increased space between items */
+    padding: 10px 20px;           /* Add padding inside list items */
+    border-radius: 5px;           /* Round the corners of the items */
+    
+}
+
+.nav-menu-about li:hover {
+    background-color: #ddd;      /* Change background on hover */
+}
+
+.nav-menu-about a {
+    text-decoration: none; 
+    color: #333;           
+    font-size: 16px;             /* Adjust font size for better readability */
+    font-weight: bold;           /* Make the text bold */
+}
+
+.nav-menu-about li a:hover {
+    color: #007BFF;              /* Change text color on hover */
+}
+
+
+.nav-menu-c{
+
+    
+    list-style-type: none;        
+    display: flex;                
+    justify-content: space-around; 
+    padding: 10;                   
+    margin: 0;     
+}
+
+.nav-menu-c li{
+
+    margin: 0 20px;
+}
+
+.nav-menu-c a{
+
+text-decoration: none;
+    color: #333;           
+
+}
+
+
+.nav-menu-r {
+    list-style-type: none;        
+    display: flex;                
+    justify-content: space-evenly; /* Distribute space more evenly */
+    padding: 0;                   
+    margin-top: 20px;             
+    
+}
+
+.nav-menu-r li {
+    margin: 0 40px;               /* Increased space between items */
+    padding: 10px 20px;           /* Add padding inside list items */
+    border-radius: 5px;           /* Round the corners of the items */
+    
+}
+
+.nav-menu-r li:hover {
+    background-color: #ddd;      /* Change background on hover */
+}
+
+.nav-menu-r a {
+    text-decoration: none; 
+    color: #333;           
+    font-size: 16px;             /* Adjust font size for better readability */
+    font-weight: bold;           /* Make the text bold */
+}
+
+.nav-menu-r li a:hover {
+    color: #007BFF;              /* Change text color on hover */
+}
+
+.nav-menu-c {
+    list-style-type: none;        
+    display: flex;                
+    justify-content: space-evenly; /* Distribute space more evenly */
+    padding: 0;                   
+    margin-top: 20px;             
+    
+}
+
+.nav-menu-c li {
+    margin: 0 40px;               /* Increased space between items */
+    padding: 10px 20px;           /* Add padding inside list items */
+    border-radius: 5px;           /* Round the corners of the items */
+    
+}
+
+.nav-menu-c li:hover {
+    background-color: #ddd;      /* Change background on hover */
+}
+
+.nav-menu-c a {
+    text-decoration: none; 
+    color: #333;           
+    font-size: 16px;             /* Adjust font size for better readability */
+    font-weight: bold;           /* Make the text bold */
+}
+
+.nav-menu-c li a:hover {
+    color: #007BFF;              /* Change text color on hover */
+}
+
+
+.p-us{
+
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-family: sans-serif;
+    background-color: green;
+}
+
+.p-log{
+
+     color: white;
+    text-align: center;
+    font-size: 30px;
+    font-family: sans-serif;
+    background-color: green;
+}
+
+
+.form-contact{
+
+
+    width: 100%;     
+    height: auto;    
+    max-width: 100%; 
+    display: block;  
+    margin:0 auto	;
+    margin-top:	20px;
+    margin-bottom:	20px;
+    padding-top: 20px;
+
+}
+
+h2 {
+    
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-family: sans-serif;
+    background-color: indianred;
+
+}
+
+
+
+
+ /* Reset body and html to take full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Overall Form Style */
+.form-contact {
+    width: 100%;
+    max-width: 100%; /* Increased width for more horizontal space */
+    margin: auto; /* Centers the form vertically and horizontally */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Style */
+.form {
+    max-width: 100%;
+    width: 100%; /* Make form responsive */
+    padding: 200px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Group Style */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input, .form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    transition: border 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+/* Button Style */
+.btn-submit {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #00408f;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .form-contact {
+        padding: 15px;
+    }
+    .form-group input, .form-group textarea {
+        font-size: 16px;
+    }
+    .btn-submit {
+        font-size: 18px;
+    }
+}
+
+
+/* General form container styling */
+.form-contact-l {
+    width: 100%;
+    max-width: 100%; /* Increased width for more horizontal space */
+    margin: auto; /* Centers the form vertically and horizontally */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form input fields and labels */
+.form-group {
+    margin-bottom: 15px; /* Reduced space between fields */
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px; /* Increased padding for a better feel */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #5c9ded;
+    outline: none;
+    box-shadow: 0 0 8px rgba(92, 157, 237, 0.4);
+}
+
+/* Submit button styling */
+button {
+    width: 100%;
+    padding: 14px; /* Increased padding for consistency */
+    font-size: 18px; /* Slightly larger text */
+    background-color: #4caf50; /* Adjusted color for better visibility */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #388e3c;
+}
+
+/* Add a little spacing between form groups */
+.form-submit {
+    text-align: center;
+}
