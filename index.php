@@ -23,10 +23,11 @@
           <li><a href="login.php"><span>Log In</span></a></li>
 
           <li><input id="search" type="text" placeholder="Search articles, topics, or services..." onkeyup="searchSuggestions()">
-
-            <div id="suggestions"></div>
+          <div id="suggestions"></div>
+            
           </li>
         </ul>
+
       </nav>
     </div>
   </header>
@@ -67,7 +68,7 @@
    function searchSuggestions() {
     var query = document.getElementById('search').value;
 
-    if (query.length < 1) {
+    if (query.length < 2) {
         document.getElementById('suggestions').innerHTML = '';  // Hide suggestions if input is too short
         return;
     }
