@@ -100,26 +100,41 @@
 
         <?php echo $message; ?>
 
-        <form class="form" method="POST" action="services.php">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Password" required>
-            </div>
-
-            <div>
-                <button type="submit">Submit</button>
-            </div>
-        </form>
-
-        <a href="https://www.facebook.com/profile.php?id=61567094392961" target="_blank">
-            <button>👍 Like us on Facebook</button>
-        </a>
+       <form class="form" method="POST" action="services.php" onsubmit="return validateEmail()">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" required>
     </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<a href="https://www.facebook.com/profile.php?id=61567094392961" target="_blank">
+    <button>👍 Like us on Facebook</button>
+</a>
+
+<script>
+function validateEmail() {
+    var email = document.getElementById("email").value;
+    var atSymbol = "@";
+    
+    if (email.indexOf(atSymbol) === -1) {
+        alert("Please enter a valid email address with '@'.");
+        return false; // Prevent form submission
+    }
+
+    // You can add further checks if needed, like validating domain name structure.
+    return true; // Allow form submission
+}
+</script>
+
 
     <!-- JavaScript for Search Suggestions -->
     <script>
