@@ -17,7 +17,7 @@ color: blue;
 h1 {
 
 
-	color: 	orange;
+	color: 	black;
 	text-align: center;
 	font-size: 	30px;
 	font-style: italic;
@@ -28,10 +28,11 @@ h1 {
 
 p {
 
-	color: orange;
+	color: black;
 	text-align: justify;
 	font-style: italic;
 	font-size: 20px;
+    background-color: ;
 	
 	line-height: 1.5;
 
@@ -233,18 +234,18 @@ span {
 }
 
 .nav-menu li:hover {
-    background-color: #ddd;      /* Change background on hover */
+    background-color: grey;      /* Change background on hover */
 }
 
 .nav-menu a {
     text-decoration: none; 
-    color: #333;           
+    color: black;           
     font-size: 16px;             /* Adjust font size for better readability */
     font-weight: bold;           /* Make the text bold */
 }
 
 .nav-menu li a:hover {
-    color: #007BFF;              /* Change text color on hover */
+    color: grey   ;              
 }
 
 .family_btn{
@@ -272,123 +273,14 @@ span {
 
  
 	
-.nav-menu-about {
-    list-style-type: none;        
-    display: flex;                
-    justify-content: space-evenly; /* Distribute space more evenly */
-    padding: 0;                   
-    margin-top: 20px;             
-    
-}
-
-.nav-menu-about li {
-    margin: 0 40px;               /* Increased space between items */
-    padding: 10px 20px;           /* Add padding inside list items */
-    border-radius: 5px;           /* Round the corners of the items */
-    
-}
-
-.nav-menu-about li:hover {
-    background-color: #ddd;      /* Change background on hover */
-}
-
-.nav-menu-about a {
-    text-decoration: none; 
-    color: #333;           
-    font-size: 16px;             /* Adjust font size for better readability */
-    font-weight: bold;           /* Make the text bold */
-}
-
-.nav-menu-about li a:hover {
-    color: #007BFF;              /* Change text color on hover */
-}
 
 
-.nav-menu-c{
 
     
-    list-style-type: none;        
-    display: flex;                
-    justify-content: space-around; 
-    padding: 10;                   
-    margin: 0;     
-}
-
-.nav-menu-c li{
-
-    margin: 0 20px;
-}
-
-.nav-menu-c a{
-
-text-decoration: none;
-    color: #333;           
-
-}
-
-
-.nav-menu-r {
-    list-style-type: none;        
-    display: flex;                
-    justify-content: space-evenly; /* Distribute space more evenly */
-    padding: 0;                   
-    margin-top: 20px;             
+           
     
-}
-
-.nav-menu-r li {
-    margin: 0 40px;               /* Increased space between items */
-    padding: 10px 20px;           /* Add padding inside list items */
-    border-radius: 5px;           /* Round the corners of the items */
+        
     
-}
-
-.nav-menu-r li:hover {
-    background-color: #ddd;      /* Change background on hover */
-}
-
-.nav-menu-r a {
-    text-decoration: none; 
-    color: #333;           
-    font-size: 16px;             /* Adjust font size for better readability */
-    font-weight: bold;           /* Make the text bold */
-}
-
-.nav-menu-r li a:hover {
-    color: #007BFF;              /* Change text color on hover */
-}
-
-.nav-menu-c {
-    list-style-type: none;        
-    display: flex;                
-    justify-content: space-evenly; /* Distribute space more evenly */
-    padding: 0;                   
-    margin-top: 20px;             
-    
-}
-
-.nav-menu-c li {
-    margin: 0 40px;               /* Increased space between items */
-    padding: 10px 20px;           /* Add padding inside list items */
-    border-radius: 5px;           /* Round the corners of the items */
-    
-}
-
-.nav-menu-c li:hover {
-    background-color: #ddd;      /* Change background on hover */
-}
-
-.nav-menu-c a {
-    text-decoration: none; 
-    color: #333;           
-    font-size: 16px;             /* Adjust font size for better readability */
-    font-weight: bold;           /* Make the text bold */
-}
-
-.nav-menu-c li a:hover {
-    color: #007BFF;              /* Change text color on hover */
-}
-
 
 .p-us{
 
@@ -429,7 +321,7 @@ h2 {
     text-align: center;
     font-size: 30px;
     font-family: sans-serif;
-    background-color: indianred;
+    background-color: green;
 
 }
 
@@ -448,7 +340,7 @@ html, body {
     width: 100%;
     max-width: 100%; /* Increased width for more horizontal space */
     margin: auto; /* Centers the form vertically and horizontally */
-    padding: 10px;
+    padding: 50px;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -458,7 +350,7 @@ html, body {
 .form {
     max-width: 100%;
     width: 100%; /* Make form responsive */
-    padding: 200px;
+    padding: 80px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -468,7 +360,7 @@ html, body {
 .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .form-group label {
@@ -510,7 +402,7 @@ html, body {
 /* Responsive Design */
 @media (max-width: 600px) {
     .form-contact {
-        padding: 15px;
+        padding: 55px;
     }
     .form-group input, .form-group textarea {
         font-size: 16px;
@@ -526,7 +418,7 @@ html, body {
     width: 100%;
     max-width: 100%; /* Increased width for more horizontal space */
     margin: auto; /* Centers the form vertically and horizontally */
-    padding: 10px;
+    padding: 100px;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);

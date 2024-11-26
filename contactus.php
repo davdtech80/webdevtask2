@@ -23,9 +23,9 @@
   </div>
 <header>
     
-    <div class="list-c">
+    <div class="list">
         <nav>
-            <ul class="nav-menu-c">
+            <ul class="nav-menu">
                 <li><a href="index.php"><span>Home</span></a></li>                 
                 <li><a href="about.php"><span>About US</span></a></li>
                 <li><a href="services.php"><span>Register</span></a></li>

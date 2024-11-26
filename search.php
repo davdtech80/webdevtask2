@@ -17,6 +17,12 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
     // SQL to search in article titles, content, and categories
     $sql = "SELECT * FROM articles WHERE title LIKE ? OR content LIKE ? OR category LIKE ?";
     $stmt = $conn->prepare($sql);
+    
+    if ($stmt === false) {
+        die("SQL statement failed: " . $conn->error);
+    }
+
+    // Bind parameters and execute query
     $stmt->bind_param("sss", $query, $query, $query);
     
     // Execute the query and get results

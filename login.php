@@ -21,7 +21,7 @@
 <body>
   <header>
             
-    <div class="list-l">
+    <div class="list">
                 
        <nav>
          <ul class="nav-menu">
@@ -41,7 +41,7 @@
             <p class="p-log"> LOG IN </p>
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Email" required>
-        </div>
+    </div>
 
         <div class="form-group">
             <label for="password">password</label>
@@ -58,6 +58,7 @@
         </div>
 
     </form>
+
 
 
 <?php
@@ -115,6 +116,14 @@ $conn->close();
 
 
 
+    
+         </div>
+
+            <a href="https://www.facebook.com/profile.php?id=61567094392961" target="_blank">
+             <button>👍 Like us on Facebook</button>
+        </div>
+
+         
 
  
 </body>
