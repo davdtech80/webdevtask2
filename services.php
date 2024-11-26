@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
     <meta charset="UTF-8">
     <title>WeLoveParenting Malta - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -16,7 +13,6 @@
 <body>
     <header>
         <div class="list">
-
             <nav>
                 <ul class="nav-menu">
                     <li><a href="index.php"><span>Home</span></a></li>
@@ -24,151 +20,169 @@
                     <li><a href="services.php"><span>Register</span></a></li>
                     <li><a href="contactus.php"><span>Contact US</span></a></li>
                     <li><a href="login.php"><span>Log In</span></a></li>
+                    <li><input id="search" type="text" placeholder="Search articles, topics, or services..." onkeyup="searchSuggestions()"></li>
+                    <div id="suggestions"></div>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <?php 
-    // Start the session
-    session_start();
+    <!-- PHP Registration Form Section -->
+    <div class="form-contact-l">
+        <h2>Register</h2>
 
-    // Connect to the database
-    $conn = new mysqli("localhost", "root", "", "dbwebdev");
+        <?php
+        // Start the session
+        session_start();
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+        // Connect to the database
+        $conn = new mysqli("localhost", "root", "", "dbwebdev");
 
-    // Variable to store the message
-    $message = '';
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Sanitize user input
-        $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
-        $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
+        // Variable to store the message
+        $message = '';
 
-        // Simple password validation check
-        if (strlen($password) < 8) {
-            $message = '<div class="alert alert-danger">Password must be at least 8 characters long.</div>';
-        } elseif (!preg_match('/[A-Z]/', $password)) {
-            $message = '<div class="alert alert-danger">Password must include at least one uppercase letter.</div>';
-        } elseif (!preg_match('/[a-z]/', $password)) {
-            $message = '<div class="alert alert-danger">Password must include at least one lowercase letter.</div>';
-        } elseif (!preg_match('/\d/', $password)) {
-            $message = '<div class="alert alert-danger">Password must include at least one number.</div>';
-        } else {
-            // Check if email already exists in the database
-            $checkEmailSql = "SELECT * FROM login WHERE email = ?";
-            $checkEmailStmt = $conn->prepare($checkEmailSql);
-            $checkEmailStmt->bind_param("s", $email);
-            $checkEmailStmt->execute();
-            $result = $checkEmailStmt->get_result();
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Sanitize user input
+            $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
+            $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
 
-            if ($result->num_rows > 0) {
-                // If email already exists, display an error message
-                $message = '<div class="alert alert-danger">Email already in use. Please use a different email.</div>';
+            // Simple password validation check
+            if (strlen($password) < 8) {
+                $message = '<div class="alert alert-danger">Password must be at least 8 characters long.</div>';
+            } elseif (!preg_match('/[A-Z]/', $password)) {
+                $message = '<div class="alert alert-danger">Password must include at least one uppercase letter.</div>';
+            } elseif (!preg_match('/[a-z]/', $password)) {
+                $message = '<div class="alert alert-danger">Password must include at least one lowercase letter.</div>';
+            } elseif (!preg_match('/\d/', $password)) {
+                $message = '<div class="alert alert-danger">Password must include at least one number.</div>';
             } else {
-                // Hash the password
-                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                // Check if email already exists in the database
+                $checkEmailSql = "SELECT * FROM login WHERE email = ?";
+                $checkEmailStmt = $conn->prepare($checkEmailSql);
+                $checkEmailStmt->bind_param("s", $email);
+                $checkEmailStmt->execute();
+                $result = $checkEmailStmt->get_result();
 
-                // Insert user into the login table
-                $sql = "INSERT INTO login (email, password) VALUES (?, ?)";
-                $stmt = $conn->prepare($sql);
-                $stmt->bind_param("ss", $email, $hashed_password);
-
-                if ($stmt->execute()) {
-                    // Success message
-                    $message = '<div class="alert alert-success">Registration successful. You can now <a href="login.php">login</a>.</div>';
+                if ($result->num_rows > 0) {
+                    // If email already exists, display an error message
+                    $message = '<div class="alert alert-danger">Email already in use. Please use a different email.</div>';
                 } else {
-                    // Error message
-                    $message = '<div class="alert alert-danger">Error: ' . $stmt->error . '</div>';
+                    // Hash the password
+                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                    // Insert user into the login table
+                    $sql = "INSERT INTO login (email, password) VALUES (?, ?)";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("ss", $email, $hashed_password);
+
+                    if ($stmt->execute()) {
+                        // Success message
+                        $message = '<div class="alert alert-success">Registration successful. You can now <a href="login.php">login</a>.</div>';
+                    } else {
+                        // Error message
+                        $message = '<div class="alert alert-danger">Error: ' . $stmt->error . '</div>';
+                    }
+
+                    $stmt->close();
                 }
 
-                $stmt->close();
+                $checkEmailStmt->close();
             }
-
-            $checkEmailStmt->close();
         }
-    }
 
-    $conn->close();
-    ?>
-
-
-     <div class="form-contact-l">
-        <h2>Register</h2>
+        $conn->close();
+        ?>
 
         <?php echo $message; ?>
 
-    <form class="form" method="POST" action="services.php">
-        <div class="form-group">
-            
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Email" required>
+        <form class="form" method="POST" action="services.php">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+
+        <a href="https://www.facebook.com/profile.php?id=61567094392961" target="_blank">
+            <button>👍 Like us on Facebook</button>
+        </a>
     </div>
 
-        <div class="form-group">
-            <label for="password">password</label>
-            <input type="password" id="password" name="password" placeholder="password" required>
-        </div>
+    <!-- JavaScript for Search Suggestions -->
+    <script>
+        // Function to handle search suggestions
+        function searchSuggestions() {
+            var query = document.getElementById('search').value;
 
-        
-        
+            if (query.length < 1) {
+                document.getElementById('suggestions').innerHTML = '';  // Hide suggestions if input is too short
+                return;
+            }
 
-        <div>  
+            // AJAX request to fetch suggestions from search.php
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "search.php?query=" + encodeURIComponent(query), true);
 
-        <button type="submit">Submit</button>
-    
-        </div>
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    try {
+                        var suggestions = JSON.parse(xhr.responseText);
 
+                        var suggestionsContainer = document.getElementById('suggestions');
+                        suggestionsContainer.innerHTML = ''; // Clear previous suggestions
 
-         </div>
+                        if (suggestions.length > 0) {
+                            // Loop through suggestions and display them
+                            suggestions.forEach(function (item) {
+                                var div = document.createElement('div');
+                                div.classList.add('suggestion-item');
+                                div.innerHTML = item.title + ' - ' + item.category;  // Display article title and category
 
-            <a href="https://www.facebook.com/profile.php?id=61567094392961" target="_blank">
-             <button>👍 Like us on Facebook</button>
-        </div>
+                                div.onclick = function () {
+                                    // When the user clicks on a suggestion, fetch the full article or message
+                                    viewArticle(item.id);
+                                    document.getElementById('search').value = item.title; // Populate input with clicked suggestion
+                                    document.getElementById('suggestions').innerHTML = ''; // Hide suggestions
+                                };
 
-         
-    
+                                suggestionsContainer.appendChild(div);
+                            });
+                        } else {
+                            suggestionsContainer.innerHTML = '<div class="suggestion-item">No results found</div>';
+                        }
+                    } catch (e) {
+                        console.error("Error parsing JSON response:", e);
+                    }
+                }
+            };
 
+            xhr.send();
+        }
+
+        // Function to view the full article based on category
+        function viewArticle(articleId, category) {
+            // Redirect to the appropriate page based on the category
+            if (category === 'adhd') {
+                window.location.href = 'article.php?id=' + articleId; // Redirect to tech-specific page
+            } else if (category === 'family') {
+                window.location.href = 'family.php?id=' + articleId; // Redirect to health-specific page
+            } else {
+                window.location.href = 'article.php?id=' + articleId; // Default article page
+            }
+        }
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
