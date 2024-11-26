@@ -14,22 +14,23 @@
   <header>
     
     <div class="list">
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="index.php"><span>Home</span></a></li>
-          <li><a href="about.php"><span>About US</span></a></li>
-          <li><a href="services.php"><span>Register</span></a></li>
-          <li><a href="contactus.php"><span>Contact US</span></a></li>
-          <li><a href="login.php"><span>Log In</span></a></li>
+  <nav>
+    <ul class="nav-menu">
+      <li><a href="index.php"><span>Home</span></a></li>
+      <li><a href="about.php"><span>About US</span></a></li>
+      <li><a href="services.php"><span>Register</span></a></li>
+      <li><a href="contactus.php"><span>Contact US</span></a></li>
+      <li><a href="login.php"><span>Log In</span></a></li>
+      
+      <!-- Search Input -->
+      <li>
+        <input id="search" type="text" placeholder="Search articles, topics, or services..." onkeyup="searchSuggestions()">
+        <div id="suggestions"></div>
+      </li>
+    </ul>
+  </nav>
+</div>
 
-          <li><input id="search" type="text" placeholder="Search articles, topics, or services..." onkeyup="searchSuggestions()">
-          <div id="suggestions"></div>
-            
-          </li>
-        </ul>
-
-      </nav>
-    </div>
   </header>
 
   <div class="image">

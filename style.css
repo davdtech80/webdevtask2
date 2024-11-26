@@ -73,27 +73,29 @@ body, .parent-img {
  	width: 	100%;
  	height: auto;
  	max-width: 	100%;
- 	display: block;
+ 	display: block     ;
  	margin:0 auto	;
  	margin-bottom: 	auto	;
  	margin-top: 	auto	;
 }
 
-
-
-
-
-
-#suggestions{
-
-    max-width:  100%;
+.list nav {
+   background-color: grey   ;
+    width:  100%;
     height: auto;
     max-width:  100%;
-    display: block;
+    display: block     ;
     margin:0 auto   ;
     margin-bottom:  auto    ;
-    margin-top:     auto
+    margin-top:     auto    ;
 }
+   
+
+
+
+
+
+
 
 
 
