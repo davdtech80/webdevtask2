@@ -4,7 +4,7 @@ Clients can search in the search box for adhd, family or school issues located i
 
 Clients can use the contact us tab to leave a message and this message and all details, mobile, email etc are saved in the submit table.
 
-Clients can register as well by providing an email and a password.
+Clients can register as well by providing an email and a password this will be stored in the db and its hashed.
 
 Once the client logs in, a dashboard is provided where the client can change the password, leave a message or update an existing one which was left before or 
 delete the account completely from the database (CRUD)
@@ -13,6 +13,11 @@ The search box is found in the Home, about and Register page. the search box als
 
 the changes are committed on GitHub by using the gitbash terminal . link below
 
+Once the user logs in a cookie is set and its tracking when the user logs in to the dashboard and a welcome back message to the user by his email is generated. 
+
 https://github.com/davdtech80/webdevtask2
 
 
+git add .
+git commit -m "set cookies"
+git push

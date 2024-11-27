@@ -1,10 +1,17 @@
 <?php
 session_start();
 
-// Check if the user is logged in
+// Check if the user is logged in via the session
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
+}
+
+// Check if the cookie is set
+if (isset($_COOKIE['user_email'])) {
+    echo "Welcome back: " . $_COOKIE['user_email'];  // Show the cookie value
+} else {
+    echo "Cookie is not set or has expired.";
 }
 
 // Fetch the user's email from the session
@@ -34,7 +41,7 @@ if ($result->num_rows == 1) {
     $user_details = $result->fetch_assoc();
 } else {
     // Set the error message if user details are not found
-    $error_message = "User details not found.";
+    $error_message = "No messages in your dashboard.";
 }
 
 // Handle password change
@@ -111,7 +118,6 @@ $conn2->close();
 ?>
 
 <!-- HTML Part -->
-<!-- HTML Part -->
 <title>Dashboard</title>
 <style>
     body {
@@ -121,7 +127,6 @@ $conn2->close();
         padding: 0;
     }
 
-    /* Adjust the form container to create space for error message */
     .container {
         max-width: 600px;
         margin: 50px auto;
@@ -195,7 +200,6 @@ $conn2->close();
         display: none;
     }
 
-    /* Styles for the "User not found" box */
     .error-message {
         position: fixed;
         top: 10px;
@@ -265,6 +269,7 @@ $conn2->close();
             <button type="submit" name="delete_account" class="delete-btn" onclick="return confirm('Are you sure you want to delete your account?');">Delete My Account</button>
         </form>
 
+        <!-- Log Out Button -->
         <a href="login.php" class="update-btn">Log Out</a>
     </div>
 
