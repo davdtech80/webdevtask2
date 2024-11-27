@@ -25,10 +25,7 @@
           <li><a href="contactus.php"><span>Contact US</span></a></li>
           <li><a href="login.php"><span>Log In</span></a></li>
 
-          <li><input id="search" type="text" placeholder="Search articles, topics, or services..." onkeyup="searchSuggestions()">
-
-            <div id="suggestions"></div>
-          </li>
+          
         </ul>
       </nav>
     </div>

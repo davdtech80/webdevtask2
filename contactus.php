@@ -14,6 +14,50 @@
     <?php
         header("Cache-Control: no-cache, must-revalidate");
         header("Expires: Sat, 1 Jan 2040 00:00:00 GMT");
+
+        // Initialize message variable
+        $message = "";
+
+        // Check if the form is submitted
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Collect the form data
+            $name = htmlspecialchars($_POST['name']);
+            $surname = htmlspecialchars($_POST['surname']);
+            $email = htmlspecialchars($_POST['email']);
+            $mobile = htmlspecialchars($_POST['mobile']);
+            $message_content = htmlspecialchars($_POST['message']);
+
+            // Database connection details
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "dbwebdev";
+
+            // Create a connection to the database
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Check for a connection error
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Prepare the SQL statement to avoid SQL injection
+            $stmt = $conn->prepare("INSERT INTO submit (name, surname, email, mobile, message) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssis", $name, $surname, $email, $mobile, $message_content); // 'sssis' means 4 strings and 1 integer
+
+            // Execute the statement
+            if ($stmt->execute()) {
+                // Success message
+                $message = '<div class="alert alert-success">Message received successfully. We will get back to you soon.</div>';
+            } else {
+                // Error message
+                $message = '<div class="alert alert-danger">Error: ' . $stmt->error . '</div>';
+            }
+
+            // Close the statement and connection
+            $stmt->close();
+            $conn->close();
+        }
     ?>
 </head>
 
@@ -22,7 +66,6 @@
   
   </div>
 <header>
-    
     <div class="list">
         <nav>
             <ul class="nav-menu">
@@ -31,11 +74,18 @@
                 <li><a href="services.php"><span>Register</span></a></li>
                 <li><a href="contactus.php"><span>Contact US</span></a></li>
                 <li><a href="login.php"><span>Log In</span></a></li>
-                
             </ul>
         </nav>
     </div>
 </header>
+
+<!-- Display message at the top -->
+<?php
+    // Show message if available
+    if (!empty($message)) {
+        echo $message;
+    }
+?>
 
 <div class="form-contact">
     <form class="form" method="POST" action="">
@@ -65,70 +115,13 @@
             <textarea id="message" name="message" rows="4" placeholder="Write your message here"></textarea>
         </div>
 
-        
-
         <button type="submit">Submit</button>
     </form>
 </div>
 
-<?php
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect the form data
-    $name = htmlspecialchars($_POST['name']);
-    $surname = htmlspecialchars($_POST['surname']);
-    $email = htmlspecialchars($_POST['email']);
-    $mobile = htmlspecialchars($_POST['mobile']);
-    $message = htmlspecialchars($_POST['message']);
-
-    // Database connection details
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "dbwebdev";
-
-    // Create a connection to the database
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check for a connection error
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // Prepare the SQL statement to avoid SQL injection
-    $stmt = $conn->prepare("INSERT INTO submit (name, surname, email, mobile, message) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssis", $name, $surname, $email, $mobile, $message); // 'sssis' means 4 strings and 1 integer
-
-    // Execute the statement
-    if ($stmt->execute()) {
-        echo "Message received";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-    // Close the statement and connection
-    $stmt->close();
-    $conn->close();
-}
-?>
  <a href="https://www.facebook.com/profile.php?id=61567094392961" target="_blank">
       <button>👍 Like us on Facebook</button>
     </a>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	

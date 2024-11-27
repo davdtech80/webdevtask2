@@ -7,13 +7,6 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Check if the cookie is set
-if (isset($_COOKIE['user_email'])) {
-    echo "Welcome back: " . $_COOKIE['user_email'];  // Show the cookie value
-} else {
-    echo "Cookie is not set or has expired.";
-}
-
 // Fetch the user's email from the session
 $user_email = $_SESSION['user_email'];
 
@@ -25,22 +18,40 @@ if ($conn2->connect_error) {
     die("Connection to the database failed: " . $conn2->connect_error);
 }
 
-// Prepare a query to get user details from the 'submit' table using the email from session
+// Initialize error message variable
+$error_message = '';
+
+// Handle message insertion
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['new_message'])) {
+    $new_message = $_POST['new_message'];
+
+    // Insert new message into 'submit' table
+    $insert_message_sql = "INSERT INTO submit (email, message) VALUES (?, ?)";
+    $insert_message_stmt = $conn2->prepare($insert_message_sql);
+    $insert_message_stmt->bind_param("ss", $user_email, $new_message);
+
+    if ($insert_message_stmt->execute()) {
+        $message = "Message saved successfully!";
+    } else {
+        $message = "Error saving message: " . $insert_message_stmt->error;
+    }
+}
+
+// Prepare a query to get user details and their messages from the 'submit' table using the email from session
 $sql = "SELECT * FROM submit WHERE email = ?";
 $stmt = $conn2->prepare($sql);
 $stmt->bind_param("s", $user_email);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Initialize error message variable
-$error_message = '';
-
 // Check if user details were found
-if ($result->num_rows == 1) {
-    // Fetch the user details
-    $user_details = $result->fetch_assoc();
+if ($result->num_rows > 0) {
+    // Fetch all the user messages
+    $user_messages = [];
+    while ($row = $result->fetch_assoc()) {
+        $user_messages[] = $row;
+    }
 } else {
-    // Set the error message if user details are not found
     $error_message = "No messages in your dashboard.";
 }
 
@@ -74,22 +85,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['new_password'])) {
     }
 }
 
-// Handle message update
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['new_message'])) {
-    $new_message = $_POST['new_message'];
-
-    // Update message in 'submit' table
-    $update_message_sql = "UPDATE submit SET message = ? WHERE email = ?";
-    $update_message_stmt = $conn2->prepare($update_message_sql);
-    $update_message_stmt->bind_param("ss", $new_message, $user_email);
-
-    if ($update_message_stmt->execute()) {
-        echo "Message updated successfully!";
-    } else {
-        echo "Error updating message.";
-    }
-}
-
 // Handle account deletion
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_account'])) {
     // Delete user from 'login' table
@@ -106,11 +101,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_account'])) {
     if ($delete_login_stmt->execute() && $delete_submit_stmt->execute()) {
         echo "Account deleted successfully!";
         session_destroy(); // Log out the user
+        setcookie('user_email', '', time() - 3600, "/"); // Clear the cookie
         header("Location: login.php");
         exit;
     } else {
         echo "Error deleting account.";
     }
+}
+
+// Set the cookie with the user's email if not set already
+if (!isset($_COOKIE['user_email'])) {
+    setcookie('user_email', $user_email, time() + (86400 * 30), "/"); // 86400 = 1 day
+}
+
+// Clear the cookie when the user logs out
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['logout'])) {
+    setcookie('user_email', '', time() - 3600, "/"); // Set cookie expiry time in the past to delete it
+    session_destroy(); // Destroy the session
+    header("Location: login.php");
+    exit;
 }
 
 // Close the database connection
@@ -232,12 +241,11 @@ $conn2->close();
         <div id="suggestions"></div>
 
         <h2>Your Details:</h2>
-        <?php if (!empty($user_details)): ?>
-            <p><strong>Name:</strong> <?php echo htmlspecialchars($user_details['name']); ?></p>
-            <p><strong>Surname:</strong> <?php echo htmlspecialchars($user_details['surname']); ?></p>
-            <p><strong>Email:</strong> <?php echo htmlspecialchars($user_details['email']); ?></p>
-            <p><strong>Mobile:</strong> <?php echo htmlspecialchars($user_details['mobile']); ?></p>
-            <p><strong>Message:</strong> <?php echo htmlspecialchars($user_details['message']); ?></p>
+        <?php if (!empty($user_messages)): ?>
+            <h3>Your Messages:</h3>
+            <?php foreach ($user_messages as $message): ?>
+                <p><strong>Message:</strong> <?php echo htmlspecialchars($message['message']); ?></p>
+            <?php endforeach; ?>
         <?php endif; ?>
 
         <!-- Button to toggle password form visibility -->
@@ -270,7 +278,9 @@ $conn2->close();
         </form>
 
         <!-- Log Out Button -->
-        <a href="login.php" class="update-btn">Log Out</a>
+        <form method="POST">
+            <button type="submit" name="logout" class="update-btn">Log Out</button>
+        </form>
     </div>
 
     <script>

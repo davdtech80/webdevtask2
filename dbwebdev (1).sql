@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2024 at 10:46 AM
+-- Generation Time: Nov 27, 2024 at 11:50 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -54,16 +54,11 @@ INSERT INTO `articles` (`id`, `title`, `content`, `category`, `author`, `created
 CREATE TABLE `login` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `failed_attempts` int(11) DEFAULT 0,
+  `last_failed_attempt` datetime DEFAULT NULL,
+  `lockout_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `login`
---
-
-INSERT INTO `login` (`id`, `email`, `password`) VALUES
-(3, 'dlc.cachia@gmail.com', '$2y$10$0j8pWvMuE.00Oigi6GXRPuz6twdcnGpEdovrwQxO7yEZruLSQ6dXy'),
-(4, 'lisa.cachia@gmail.com', '$2y$10$fNsbmt6yHji5A41zE3o.J.ycwCkkvrfzrLQ91maXRJSMUbGlzlk8.');
 
 -- --------------------------------------------------------
 
@@ -79,14 +74,6 @@ CREATE TABLE `submit` (
   `mobile` int(11) NOT NULL,
   `message` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `submit`
---
-
-INSERT INTO `submit` (`ID`, `name`, `surname`, `email`, `mobile`, `message`) VALUES
-(1, 'David', 'Cachia', 'dlc.cachia@gmail.com', 79591611, 'I wish to book for an appointment please '),
-(2, 'Lisa', 'Cachia', 'lisa.cachia@gmail.com', 79054686, 'Hello I am Lisa and would like to book');
 
 --
 -- Indexes for dumped tables
@@ -126,13 +113,13 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `submit`
 --
 ALTER TABLE `submit`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

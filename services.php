@@ -20,11 +20,12 @@
                     <li><a href="services.php"><span>Register</span></a></li>
                     <li><a href="contactus.php"><span>Contact US</span></a></li>
                     <li><a href="login.php"><span>Log In</span></a></li>
-                    <li><input id="search" type="text" placeholder="Search articles, topics, or services..." onkeyup="searchSuggestions()"></li>
-                    <div id="suggestions"></div>
+                    <li><input id="search" type="text" placeholder="Search, adhd, family, schools" onkeyup="searchSuggestions()"></li>
+                    
                 </ul>
             </nav>
         </div>
+        <div id="suggestions"></div>
     </header>
 
     <!-- PHP Registration Form Section -->
@@ -103,12 +104,12 @@
        <form class="form" method="POST" action="services.php" onsubmit="return validateEmail()">
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Email" required>
+        <input type="email" id="email" name="email" placeholder="Create Email" required>
     </div>
 
     <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="password" id="password" name="password" placeholder="Create Password" required>
     </div>
 
     <div>

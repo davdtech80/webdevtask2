@@ -24,12 +24,13 @@
       
       <!-- Search Input -->
       <li>
-        <input id="search" type="text" placeholder="Search articles, topics, or services..." onkeyup="searchSuggestions()">
-        <div id="suggestions"></div>
+        <input id="search" type="text" placeholder="Search, adhd, family, schools" onkeyup="searchSuggestions()">
+       
       </li>
     </ul>
   </nav>
 </div>
+ <div id="suggestions"></div>
 
   </header>
 

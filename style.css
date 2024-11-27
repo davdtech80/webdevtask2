@@ -189,6 +189,16 @@ span {
     
 }
 
+#suggestions{
+
+margin: 0 40px;               /* Increased space between items */
+    padding: 10px 10px;           /* Add padding inside list items */
+    border-radius: 0px;           /* Round the corners of the items */
+    transition: background-color 0.3s; /* Smooth hover effect */
+    float: right;
+    
+}
+
 .nav-menu li {
     margin: 0 40px;               /* Increased space between items */
     padding: 10px 20px;           /* Add padding inside list items */
@@ -385,6 +395,7 @@ html, body {
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    
 }
 
 /* Form input fields and labels */

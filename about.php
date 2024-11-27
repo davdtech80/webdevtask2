@@ -24,13 +24,14 @@
           <li><a href="contactus.php"><span>Contact US</span></a></li>
           <li><a href="login.php"><span>Log In</span></a></li>
 
-          <li><input id="search" type="text" placeholder="Search articles, topics, or services..." onkeyup="searchSuggestions()">
+          <li><input id="search" type="text" placeholder="Search, adhd, family, schools" onkeyup="searchSuggestions()">
 
-            <div id="suggestions"></div>
+            
           </li>
         </ul>
       </nav>
     </div>
+    <div id="suggestions"></div>
     
      <div class="image"> 
       <img class="tfal-img" src="/assets/images/dwarna.jpg" alt="parents">
@@ -51,10 +52,7 @@
     <footer>
             <p class="copyright">Copyright 2020 &copy; All right reserved</p>
     </footer>
-        <div class=" contactus-footer">
-          <a class="contact"href="contactus.php"><span>Contact US</span></a>
-
-    </div>
+        
 
 
 
